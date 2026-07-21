@@ -1,0 +1,41 @@
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--color-primary);
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.navItem {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  padding: 15px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.navItem:hover {
+  color: white;
+  background-color: rgba(255,255,255,0.05);
+}
+
+.navItem.active {
+  color: var(--color-secondary);
+  border-left-color: var(--color-secondary);
+  background-color: rgba(255,255,255,0.1);
+}

@@ -1,0 +1,19 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.chartContainer {
+  height: 250px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

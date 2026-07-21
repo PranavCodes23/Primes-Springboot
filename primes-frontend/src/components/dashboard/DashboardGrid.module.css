@@ -1,0 +1,15 @@
+.dashboardContainer {
+  padding: 15px;
+}
+
+.topGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 15px;
+  align-items: stretch;
+}
+
+.leftCol, .centerCol, .rightCol {
+  display: flex;
+  flex-direction: column;
+}

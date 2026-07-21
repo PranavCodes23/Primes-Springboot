@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mapArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.placeholderMap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #999;
+  font-weight: 500;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.iconCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.bgDark { background-color: #2b3a4a; }
+.bgGreen { background-color: #10b981; }
+.bgBlue { background-color: #3b82f6; }
+
+.metricValue {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.metricLabel {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 4px;
+}

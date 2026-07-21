@@ -1,0 +1,38 @@
+.filterBar {
+  height: var(--filter-bar-height);
+  background-color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: var(--header-height);
+  z-index: 80;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+}
+
+.filterBtn {
+  background-color: #3b4b5d; /* Darkish gray-blue */
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s;
+}
+
+.filterBtn:hover {
+  background-color: var(--color-primary);
+}

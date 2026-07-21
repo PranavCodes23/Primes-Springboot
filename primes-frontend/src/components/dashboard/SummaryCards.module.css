@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: white;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 90px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif; /* For real we'd use digital-clock-font per JS, but Inter is cleaner */
+}
+
+.label {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-top: 5px;
+}
+
+.blueCard { background-color: var(--color-card-blue); }
+.redCard { background-color: var(--color-card-red); }
+.purpleCard { background-color: var(--color-card-purple); }
