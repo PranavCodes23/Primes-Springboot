@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model ZoneData {
+  id           Int       @id @default(autoincrement())
+  date         DateTime  @db.Date
+  booking_loc  String
+  tktbkd       Int
+  tktcan       Int
+  psgnbkg      Int
+  psgncanc     Int
+  earning      Float
+  refund       Float
+  net          Float
+  loadingtime  DateTime?
+
+  @@unique([date, booking_loc])
+}

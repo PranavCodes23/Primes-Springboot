@@ -153,7 +153,7 @@ const DistributionRow = () => {
                   <Cell key={`cell-${index}`} fill={COLORS_PIE3[index % COLORS_PIE3.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value: number) => [`${value}%`, 'Share']} />
+              <Tooltip formatter={(value: any, name: any) => [`${value}%`, name]} />
             </PieChart>
           </ResponsiveContainer>
         </div>

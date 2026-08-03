@@ -17,9 +17,9 @@
   --color-text-inverse: #ffffff;
 
   /* Layout */
-  --sidebar-width: 60px;
-  --header-height: 50px;
-  --filter-bar-height: 40px;
+  --sidebar-width: 45px;
+  --header-height: 28px;
+  --filter-bar-height: 32px;
 }
 
 * {
@@ -70,4 +70,23 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* Remove default focus outline from recharts */
+.recharts-wrapper,
+.recharts-surface,
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none !important;
+}
+
+/* Remove outline from responsive container inner div */
+.recharts-responsive-container,
+.recharts-responsive-container:focus {
+  outline: none !important;
+}
+
+/* Remove focus outline from any child element within recharts */
+.recharts-wrapper * {
+  outline: none !important;
 }

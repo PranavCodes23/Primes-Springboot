@@ -3,6 +3,7 @@ package com.primes.controller;
 import com.primes.model.DashboardData;
 import com.primes.model.ZoneData;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,38 +12,38 @@ import java.util.List;
 @RequestMapping("/api/v1/dashboard")
 @CrossOrigin(origins = "*")
 public class DashboardController {
+    @Autowired
+    private com.primes.repository.ZoneDataRepository zoneDataRepository;
 
-    @PostMapping("/getAllZoneData")
-    public DashboardData getAllZoneData() {
-        // Returning mock data mirroring the legacy JS
-        
-        ZoneData allIndiaCurr = ZoneData.builder()
-            .booking_loc("ALL")
-            .tktbkd(1968310)
-            .psgnbkg(3102119)
-            .earning(2500463788L)
-            .refund(479282633L)
-            .net(2021181155L)
-            .tktcan(419698)
-            .psgncanc(658324)
-            .loadingtime("2026-07-15 13:08")
-            .build();
-            
-        ZoneData allIndiaPrev = ZoneData.builder()
-            .booking_loc("ALL")
-            .tktbkd(590000)
-            .psgnbkg(1050000)
-            .earning(8900000)
-            .refund(75000)
-            .net(710000)
-            .tktcan(120000)
-            .psgncanc(20000)
-            .build();
-
+    @PostMapping("/zone-data")
+    public DashboardData getZoneData(@RequestBody(required = false) java.util.Map<String, String> payload) {
         DashboardData response = new DashboardData();
-        response.setCurrData(Arrays.asList(allIndiaCurr));
-        response.setPreviousYData(Arrays.asList(allIndiaPrev));
-
+        String dateStr = (payload != null && payload.containsKey("date")) ? payload.get("date") : "2025-01-01";
+        try {
+            java.util.Date queryDate = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+            List<ZoneData> currData = zoneDataRepository.findByDate(queryDate);
+            response.setCurrData(currData);
+            response.setPreviousYData(new java.util.ArrayList<>());
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.setCurrData(new java.util.ArrayList<>());
+            response.setPreviousYData(new java.util.ArrayList<>());
+        }
+        return response;
+    }
+    
+    @PostMapping("/stats-data")
+    public java.util.Map<String, Object> getStatsData(@RequestBody(required = false) java.util.Map<String, String> payload) {
+        java.util.Map<String, Object> response = new java.util.HashMap<>();
+        try {
+            java.util.Date startDate = new java.text.SimpleDateFormat("yyyy-MM-dd").parse("2025-01-01");
+            java.util.Date endDate = new java.text.SimpleDateFormat("yyyy-MM-dd").parse("2025-01-15");
+            List<ZoneData> statsData = zoneDataRepository.findByDateBetweenAndBookingLoc(startDate, endDate, "ALL");
+            response.put("statsData", statsData);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("statsData", new java.util.ArrayList<>());
+        }
         return response;
     }
 }

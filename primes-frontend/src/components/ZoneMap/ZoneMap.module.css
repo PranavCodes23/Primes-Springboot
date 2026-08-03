@@ -1,0 +1,63 @@
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mapContainer svg {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+
+.mapContainer svg path {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  stroke: #ffffff;
+  stroke-width: 1px;
+}
+
+.mapContainer svg path:hover {
+  fill-opacity: 0.8 !important;
+  stroke: #ffffff !important;
+  stroke-width: 4px !important;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+}
+
+.zonedesc {
+  fill: #1f2f45;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.utsMap .det,
+.utsMap .zonedesc {
+  font-weight: normal !important;
+}
+
+.utsMap .det {
+  font-size: 30px !important;
+}
+
+.utsMap .NR { fill: #34676F !important; }
+.utsMap .NW { fill: #338BA7 !important; }
+.utsMap .WC { fill: #8EB346 !important; }
+.utsMap .NC { fill: #836248 !important; }
+.utsMap .NE { fill: #858F31 !important; }
+.utsMap .ER { fill: #B58778 !important; }
+.utsMap .EC { fill: #8D8D8E !important; }
+.utsMap .NF { fill: #8F8274 !important; }
+.utsMap .WR { fill: #9DC743 !important; }
+.utsMap .CR { fill: #F1DF06 !important; }
+.utsMap .SC { fill: #F96800 !important; }
+.utsMap .SW { fill: #3F296D !important; }
+.utsMap .SR { fill: #8E1602 !important; }
+.utsMap .SE { fill: #AA3D8D !important; }
+.utsMap .EO { fill: #F3CA13 !important; }
+.utsMap .KR { fill: #5A5A5A !important; }
+.utsMap .SB { fill: #2B4E54 !important; }

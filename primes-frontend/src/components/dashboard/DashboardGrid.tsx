@@ -1,6 +1,6 @@
 import React from 'react';
 import AdvanceReservationChart from './AdvanceReservationChart';
-import ZoneMapPlaceholder from './ZoneMapPlaceholder';
+import ZoneMapWidget from './ZoneMapWidget';
 import BookingStatistics from './BookingStatistics';
 import DistributionRow from './DistributionRow';
 import styles from './DashboardGrid.module.css';
@@ -17,10 +17,10 @@ const DashboardGrid: React.FC<DashboardGridProps> = ({ data }) => {
           <AdvanceReservationChart />
         </div>
         <div className={styles.centerCol}>
-          <ZoneMapPlaceholder data={data} />
+          <ZoneMapWidget data={data} />
         </div>
         <div className={styles.rightCol}>
-          <BookingStatistics data={data} />
+          <BookingStatistics data={data.statsData} />
         </div>
       </div>
       

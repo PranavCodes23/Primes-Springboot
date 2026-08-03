@@ -1,41 +1,116 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  
+  padding: 0;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+.headerStack {
+  display: flex;
+  flex-direction: column;
+}
+
+.subHeaderGreen {
+  background-color: #dcedc8;
+  color: #33691e;
+  text-align: center;
+  font-weight: 500;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+.subHeaderBlue {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  text-align: center;
+  font-weight: 500;
+  padding: 8px;
+  font-size: 0.9rem;
 }
 
 .chartSection {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  margin-bottom: 20px;
 }
 
-.chartHeader {
+.massiveRedBanner {
+  background-color: #e53935;
+  color: white;
+  padding: 4px 15px;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
-.redBadge {
-  background-color: var(--color-card-red);
-  color: white;
-  padding: 5px 15px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 0.85rem;
+/* Subtle background circles for the red banner */
+.bannerDecorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  
+  background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.15) 15px, transparent 16px),
+                    radial-gradient(circle at 40% 100%, rgba(255,255,255,0.1) 25px, transparent 26px),
+                    radial-gradient(circle at 60% 60%, rgba(255,255,255,0.05) 10px, transparent 11px);
 }
 
-.purpleBadge {
-  background-color: var(--color-card-purple);
+.massivePurpleBanner {
+  background-color: #8e24aa;
   color: white;
-  padding: 5px 15px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 0.85rem;
+  padding: 4px 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bannerText {
+  text-align: right;
+  z-index: 1;
+}
+
+.bannerValue {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.bannerLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 3px;
 }
 
 .chartBody {
-  flex: 1;
-  min-height: 180px;
+  height: 330px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin: 0;
+  padding-top: 10px;
+}
+
+.customLegend {
+  display: flex;
+  gap: 20px;
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #333;
+}
+
+.legendColor {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
 }

@@ -1,35 +1,34 @@
 import FilterBar from '@/components/layout/FilterBar';
 import DashboardGrid from '@/components/dashboard/DashboardGrid';
 
+import { prisma } from '@/lib/prisma';
+
 // Force Next.js to dynamically render this page on every single request
 export const dynamic = 'force-dynamic';
 
-// Simulate ISR data fetching from our BFF proxy
 async function getDashboardData() {
-  // In a real scenario with the BFF, this would be:
-  // const res = await fetch('http://localhost:3000/api/dashboard/getAllZoneData', { 
-  //   next: { revalidate: 60 } 
-  // });
-  // return res.json();
-  
-  // Simulating network delay and returning the mock data directly for the prototype
-  await new Promise(resolve => setTimeout(resolve, 100));
-  
-  return {
-    currData: [
-      { 
-        booking_loc: "ALL", 
-        tktbkd: 1968310, 
-        psgnbkg: 3102119, 
-        earning: 2500463788, 
-        refund: 479282633, 
-        net: 2021181155, 
-        tktcan: 419698, 
-        psgncanc: 658324,
-        loadingtime: "2026-07-15 13:08" 
-      }
-    ]
-  };
+  try {
+    const res = await fetch('http://localhost:8080/api/v1/dashboard/zone-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date: '2025-01-01' }),
+      cache: 'no-store'
+    });
+    const mapData = await res.json();
+    
+    const statsRes = await fetch('http://localhost:8080/api/v1/dashboard/stats-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
+      cache: 'no-store'
+    });
+    const statsData = await statsRes.json();
+    
+    return { currData: mapData.currData || [], statsData: statsData.statsData || [] };
+  } catch (e) {
+    console.error("Error fetching from FastAPI backend", e);
+    return { currData: [], statsData: [] };
+  }
 }
 
 export default async function Home() {
