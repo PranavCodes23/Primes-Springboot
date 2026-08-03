@@ -265,7 +265,7 @@ export default function ZoneMapScreen({ data, isUtsDashboard = false, isEnlarged
         <div className={styles.headerPanel}>
           <div className={styles.lastUpdated}>
             <Clock size={16} /> 
-            Last Updated: {displayData.loadingtime || '2026-07-15 13:08'}
+            Last Updated: {displayData.loadingtime ? displayData.loadingtime.split('.')[0].replace('T', ' ') : '2026-07-15 13:08:00'}
           </div>
           <div className={styles.headerTitle} style={{ gap: '10px' }}>
             ALL INDIA EARNINGS ON DATE : {selectedDate}
@@ -304,7 +304,7 @@ export default function ZoneMapScreen({ data, isUtsDashboard = false, isEnlarged
         const metricInfo = metrics.find(m => m.id === activeTableMetric);
         const metricName = metricInfo ? metricInfo.label : '';
         
-        const tableData = [...(localData?.currData || [])].filter((d: any) => d.booking_loc !== 'ALL');
+        const tableData = [...(localData?.currData || [])].filter((d: any) => d.booking_loc !== 'ALL' && d.booking_loc?.toUpperCase() !== 'INTERNET');
         tableData.sort((a, b) => {
           let aVal, bVal;
           if (sortColumn === 'zone') {
